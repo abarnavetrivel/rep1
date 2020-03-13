@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+
+struct stack {
+    int top;
+    int elt[100];
+    int max;
+};
+typedef struct stack st;
+
+void initstack(st *s)
+{
+    s->top=-1;
+    s->max=0;
+}
+
+void push(st *s,int data)
+{
+    s->top++;
+    s->elt[s->top]=data;
+    if(s->max<data)
+    {
+        s->max=data;
+    }
+}
+void pop(st *s)
+{
+    s->top--;
+}
+
+void displayMax(st *s)
+{
+    printf("%d ",s->max);
+}
+int main()
+{   
+    st s;
+    initstack(&s);
+    push(&s,10);
+    push(&s,20);
+    push(&s,5);
+    push(&s,100);
+    pop(&s);
+    displayMax(&s);
+    return 0;
+}
